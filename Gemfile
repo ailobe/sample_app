@@ -9,6 +9,15 @@ gem 'rails', '~> 5.2.1'
 # Hash function for Rails method has_secure_password
 gem 'bcrypt'
 
+# Makes sample users with semi-realistic names and email addresses
+gem 'faker'
+
+# Pagination method
+gem 'will_paginate'
+
+# Configures will_paginate to use Bootstrap’s pagination styles
+gem 'bootstrap-will_paginate'
+
 # Bootstrap framework
 gem 'bootstrap-sass'
 
