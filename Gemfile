@@ -12,6 +12,12 @@ gem 'bcrypt'
 # Makes sample users with semi-realistic names and email addresses
 gem 'faker'
 
+# To handle an uploaded image and associate it with the Micropost model
+# Provides a way to upload files from Ruby applications.
+gem 'carrierwave'
+# Using MiniMagick the ruby processes memory remains small
+gem 'mini_magick'
+
 # Pagination method
 gem 'will_paginate'
 
@@ -85,7 +91,11 @@ group :test do
 end
 
 group :production do
+  # Postgres for Heroku
   gem 'pg'
+
+  # Ruby cloud services library
+  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

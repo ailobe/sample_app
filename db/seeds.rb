@@ -25,3 +25,16 @@ User.create!(name:  name,
      activated: true,
      activated_at: Time.zone.now)
 end
+
+
+chuck_facts = []
+until chuck_facts.length > 30
+  fact = Faker::ChuckNorris.fact
+  fact.length < 140 ? chuck_facts << fact : next
+end
+
+users = User.order(:created_at).take(6)
+users.each do |user|
+  chuck_facts.shuffle!
+  chuck_facts.each { |fact| user.microposts.create!(content: fact) }
+end
