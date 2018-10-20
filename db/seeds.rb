@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Users
 User.create!(name:  "Example User",
     email: "example@railstutorial.org",
     password:              "foobar",
@@ -26,9 +27,9 @@ User.create!(name:  name,
      activated_at: Time.zone.now)
 end
 
-
+# Microposts
 chuck_facts = []
-until chuck_facts.length > 30
+until chuck_facts.length > 50
   fact = Faker::ChuckNorris.fact
   fact.length < 140 ? chuck_facts << fact : next
 end
@@ -38,3 +39,11 @@ users.each do |user|
   chuck_facts.shuffle!
   chuck_facts.each { |fact| user.microposts.create!(content: fact) }
 end
+
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
